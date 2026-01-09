@@ -40,7 +40,7 @@ export default function AboutPage() {
           <div className="mt-16 grid gap-10 md:grid-cols-2">
             {/* Mission */}
             <div className="rounded-3xl bg-white p-10 shadow-lg text-center">
-              <div className="text-4xl mb-4">🎯</div>
+              {/* <div className="text-4xl mb-4">🎯</div> */}
               <h3 className="text-2xl font-bold text-[#0b3b7a]">Our Mission</h3>
               <p className="mt-4 text-lg text-slate-600">
                 “To deliver strategic guidance in federal complexity with transparency
@@ -50,7 +50,7 @@ export default function AboutPage() {
 
             {/* Vision */}
             <div className="rounded-3xl bg-white p-10 shadow-lg text-center">
-              <div className="text-4xl mb-4">⭐</div>
+              {/* <div className="text-4xl mb-4">⭐</div> */}
               <h3 className="text-2xl font-bold text-[#0b3b7a]">Our Vision</h3>
               <p className="mt-4 text-lg text-slate-600">
                 “To be the trusted federal partner recognized for excellence in
