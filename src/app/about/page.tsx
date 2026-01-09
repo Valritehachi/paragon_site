@@ -8,22 +8,27 @@ export default function AboutPage() {
       <Header />
 
       {/* ABOUT INTRO */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <h1 className="text-4xl text-center font-extrabold text-[#0b3b7a] md:text-5xl">
-          About Us
-        </h1>
+      <section className="w-full bg-white from-[#0b3b7a]/35 via-[#0b3b7a]/20 to-transparent py-24">
+        <div className="mx-auto max-w-7xl px-6 text-center">
+          
+          <h1 className="text-4xl font-extrabold text-[#0b3b7a] md:text-5xl">
+            About Us
+          </h1>
 
-        {/* subtle divider */}
-        <div className="mx-auto mt-6 h-2 w-64 rounded-full bg-[#0b3b7a]/80 animate-divider" />
+          {/* divider */}
+          <div className="mx-auto mt-6 h-2 w-64 rounded-full bg-[#0b3b7a]/80 animate-divider" />
 
-        <p className="mt-6 max-w-3xl text-xl font-bold leading-relaxed text-slate-700">
-          Paragon Federal Strategies Corporation provides disciplined oversight,
-          compliance governance, and strategic program management for federal
-          benefit programs. We help agencies strengthen accountability,
-          transparency, and performance while meeting complex regulatory
-          requirements.
-        </p>
+          <p className="mx-auto mt-6 max-w-3xl text-xl font-bold leading-relaxed text-slate-700">
+            Paragon Federal Strategies Corporation provides disciplined oversight,
+            compliance governance, and strategic program management for federal
+            benefit programs. We help agencies strengthen accountability,
+            transparency, and performance while meeting complex regulatory
+            requirements.
+          </p>
+
+        </div>
       </section>
+
 
       {/* MISSION & VISION */}
       <section className="bg-slate-50 py-24">

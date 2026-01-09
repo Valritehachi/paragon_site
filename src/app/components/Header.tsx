@@ -22,7 +22,7 @@ export default function Header() {
             {/* LOGO (pinned left, height controlled) */}
             <div className="relative h-30 w-44">
             <Image
-                src="/logo.png"
+                src="/images/logo.png"
                 alt="Paragon Federal Strategies Corporation"
                 fill
                 priority

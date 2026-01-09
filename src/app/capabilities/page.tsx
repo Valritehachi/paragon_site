@@ -37,7 +37,7 @@ export default function CapabilitiesPage() {
 
             <div className="mx-auto mt-6 h-2 w-84 rounded-full bg-[#0b3b7a]/80 animate-divider" />
 
-            <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-slate-800">
+            <p className="mx-auto mt-8 max-w-3xl text-lg font-bold leading-relaxed text-slate-800">
               Paragon Federal Strategies Corporation supports federal benefit programs
               with disciplined oversight, governance, and audit-ready operational
               controls—designed to strengthen compliance, accountability, and measurable

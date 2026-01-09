@@ -17,7 +17,7 @@ export default function ContactPage() {
 
             <div className="mx-auto mt-6 h-1 w-74 rounded-full bg-[#0b3b7a]/80 animate-divider" />
 
-            <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-slate-800">
+            <p className="mx-auto mt-8 max-w-3xl text-lg font-bold leading-relaxed text-slate-800">
               For contracting inquiries or partnership requests, please direct all
               correspondence to our corporate office.
             </p>

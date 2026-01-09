@@ -22,42 +22,67 @@ export default function Home() {
             </h2>
 
             <div className="mt-12 grid gap-10 md:grid-cols-3">
-              {[
-                {
-                  title: "Real-time Claims Adjudication Oversight",
-                  desc: "Continuous monitoring and validation of claims processing",
-                },
+              {[{
+                title: "Real-time Claims Adjudication Oversight",
+                image: "/images/image_1.png",
+              },
                 {
                   title: "Comprehensive Eligibility & Formulary Review",
-                  desc: "Thorough verification of eligibility and coverage",
+                  image: "/images/image_2.png",
                 },
                 {
                   title: "Compliance and Audit Readiness",
-                  desc: "Maintained documentation ensuring federal audit preparedness",
+                  image: "/images/image_3.png",
                 },
                 {
                   title: "Transparent Financial Controls",
-                  desc: "Clear oversight of financial operations and reconciliation",
+                  image: "/images/image_4.png",
                 },
                 {
                   title: "Vendor Oversight and Risk Mitigation",
-                  desc: "Proactive management of vendor relationships and risk factors",
+                  image: "/images/image_5.png",
                 },
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-3xl bg-slate-50 p-10 shadow-[0_18px_60px_rgba(2,6,23,0.10)]"
-                >
-                  {/* top accent */}
-                  <div className="-mt-10 -mx-10 mb-8 h-1.5 rounded-t-3xl bg-[#0b3b7a]" />
+                  className={`group relative overflow-hidden rounded-3xl p-10
+                  shadow-[0_18px_60px_rgba(2,6,23,0.10)]
+                  transition-all duration-500 ease-out
+                  hover:-translate-y-2 hover:shadow-[0_30px_90px_rgba(2,6,23,0.25)]
+                  ${item.image ? "text-white min-h-[320px] flex flex-col" : "bg-slate-50"}`}
 
-                  <h3 className="text-2xl font-extrabold leading-snug text-[#0b3b7a] md:text-3xl">
+                >
+                  {/* ✅ background image only if provided */}
+                  {item.image && (
+                    <>
+                      <div
+                        className="absolute inset-0 bg-cover bg-center"
+                        style={{ backgroundImage: `url(${item.image})` }}
+                      />
+                      {/* ✅ dark overlay like your example */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
+                    </>
+                  )}
+
+                  {/* top accent */}
+                  <div
+                    className={`relative -mt-10 -mx-10 mb-40 h-1.5 rounded-t-3xl
+                    ${item.image ? "bg-white/80" : "bg-[#0b3b7a]"}`}
+                  />
+
+                  <h3
+                    className={`relative mt-auto text-2xl font-extrabold leading-snug md:text-3xl
+                    ${item.image ? "text-white" : "text-[#0b3b7a]"}`}
+                  >
                     {item.title}
                   </h3>
 
-                  <p className="mt-6 text-lg leading-relaxed text-slate-600">
+                  {/* <p
+                    className={`relative mt-6 text-lg leading-relaxed
+                    ${item.image ? "text-white/90" : "text-slate-600"}`}
+                  >
                     {item.desc}
-                  </p>
+                  </p> */}
                 </div>
               ))}
             </div>

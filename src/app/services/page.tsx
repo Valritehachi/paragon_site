@@ -50,7 +50,7 @@ export default function ServicesPage() {
             <div className="mx-auto mt-6 h-2 w-64 rounded-full bg-[#0b3b7a]/80 animate-divider" />
 
 
-            <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-slate-800">
+            <p className="mx-auto mt-8 max-w-3xl text-lg font-bold leading-relaxed text-slate-800">
               Our services are designed to strengthen oversight, ensure compliance, and
               support audit-ready operations across federal benefit programs.
             </p>
