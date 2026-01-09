@@ -89,7 +89,7 @@ export default function ContactForm() {
   const disabled = status.type === "sending";
 
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white py-3">
       <div className="mx-auto max-w-4xl px-6">
         <div className="mx-auto mt-12 max-w-3xl rounded-3xl bg-white p-10 shadow-[0_18px_60px_rgba(2,6,23,0.10)]">
           <form onSubmit={onSubmit} className="space-y-6">
