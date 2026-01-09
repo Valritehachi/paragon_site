@@ -7,6 +7,7 @@ type ContactPayload = {
   firstName: string;
   lastName: string;
   email: string;
+  phone?: string; 
   message: string;
   recaptchaToken: string; // ✅ reCAPTCHA (NEW)
 };
@@ -47,6 +48,7 @@ export async function POST(req: Request) {
     const firstName = (body.firstName ?? "").trim();
     const lastName = (body.lastName ?? "").trim();
     const email = (body.email ?? "").trim();
+    const phone = (body.phone ?? "").trim();
     const message = (body.message ?? "").trim();
     const recaptchaToken = (body.recaptchaToken ?? "").trim(); // ✅ reCAPTCHA (NEW)
 
@@ -96,17 +98,22 @@ export async function POST(req: Request) {
 
     const subject = `New Contact Form Message — ${firstName} ${lastName}`;
     const text = `Name: ${firstName} ${lastName}
-Email: ${email}
+    Email: ${email}${phone ? `\nPhone: ${phone}` : ""}
 
-Message:
-${message}
-`;
+    Message:
+    ${message}
+    `;
 
     const html = `
       <div style="font-family: Arial, sans-serif; line-height: 1.6;">
         <h2 style="margin:0 0 12px;">New Contact Form Message</h2>
         <p style="margin:0 0 6px;"><strong>Name:</strong> ${escapeHtml(firstName)} ${escapeHtml(lastName)}</p>
         <p style="margin:0 0 6px;"><strong>Email:</strong> ${escapeHtml(email)}</p>
+        ${
+          phone
+            ? `<p style="margin:0 0 6px;"><strong>Phone:</strong> ${escapeHtml(phone)}</p>`
+            : ""
+        }
         <p style="margin:14px 0 6px;"><strong>Message:</strong></p>
         <div style="white-space: pre-wrap; border: 1px solid #eee; padding: 12px; border-radius: 8px;">
           ${escapeHtml(message)}

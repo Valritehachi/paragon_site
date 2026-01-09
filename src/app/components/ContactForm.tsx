@@ -15,6 +15,7 @@ export default function ContactForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
   // ✅ store token from checkbox
@@ -42,6 +43,7 @@ export default function ContactForm() {
           firstName,
           lastName,
           email,
+          phone, 
           message,
           recaptchaToken, // ✅ send it
         }),
@@ -70,6 +72,7 @@ export default function ContactForm() {
       setFirstName("");
       setLastName("");
       setEmail("");
+      setPhone("");
       setMessage("");
 
       // reset captcha too
@@ -122,6 +125,15 @@ export default function ContactForm() {
               className="h-16 w-full rounded-xl border-2 border-slate-800/80 px-6 text-xl text-slate-700 placeholder:text-slate-400 focus:border-[#0b3b7a] focus:outline-none"
               disabled={disabled}
               required
+            />
+
+            <input
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Phone Number (optional)"
+              type="tel"
+              className="h-16 w-full rounded-xl border-2 border-slate-800/80 px-6 text-xl text-slate-700 placeholder:text-slate-400 focus:border-[#0b3b7a] focus:outline-none"
+              disabled={disabled}
             />
 
             {/* Message */}
