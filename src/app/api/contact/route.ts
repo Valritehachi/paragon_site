@@ -8,10 +8,36 @@ type ContactPayload = {
   lastName: string;
   email: string;
   message: string;
+  recaptchaToken: string; // ✅ reCAPTCHA (NEW)
 };
 
 function isEmail(s: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+}
+
+// ✅ reCAPTCHA (NEW): verify helper
+async function verifyRecaptcha(token: string) {
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
+  if (!secret) {
+    throw new Error("Missing RECAPTCHA_SECRET_KEY");
+  }
+
+  const params = new URLSearchParams();
+  params.append("secret", secret);
+  params.append("response", token);
+
+  const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: params.toString(),
+  });
+
+  const data = (await res.json()) as {
+    success: boolean;
+    "error-codes"?: string[];
+  };
+
+  return data;
 }
 
 export async function POST(req: Request) {
@@ -22,6 +48,7 @@ export async function POST(req: Request) {
     const lastName = (body.lastName ?? "").trim();
     const email = (body.email ?? "").trim();
     const message = (body.message ?? "").trim();
+    const recaptchaToken = (body.recaptchaToken ?? "").trim(); // ✅ reCAPTCHA (NEW)
 
     if (!firstName || !lastName || !email || !message) {
       return NextResponse.json(
@@ -33,6 +60,23 @@ export async function POST(req: Request) {
     if (!isEmail(email)) {
       return NextResponse.json(
         { ok: false, error: "Please enter a valid email address." },
+        { status: 400 }
+      );
+    }
+
+    // ✅ reCAPTCHA (NEW): require token
+    if (!recaptchaToken) {
+      return NextResponse.json(
+        { ok: false, error: "Please complete the reCAPTCHA." },
+        { status: 400 }
+      );
+    }
+
+    // ✅ reCAPTCHA (NEW): verify token with Google
+    const recaptcha = await verifyRecaptcha(recaptchaToken);
+    if (!recaptcha.success) {
+      return NextResponse.json(
+        { ok: false, error: "reCAPTCHA verification failed. Please try again." },
         { status: 400 }
       );
     }

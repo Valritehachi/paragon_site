@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 type Status =
   | { type: "idle" }
@@ -16,20 +17,43 @@ export default function ContactForm() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  // ✅ store token from checkbox
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    // ✅ block if not checked
+    if (!recaptchaToken) {
+      setStatus({ type: "error", message: "Please complete the reCAPTCHA." });
+      return;
+    }
+
     setStatus({ type: "sending" });
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, lastName, email, message }),
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          message,
+          recaptchaToken, // ✅ send it
+        }),
       });
 
       const data = (await res.json()) as { ok: boolean; error?: string };
 
       if (!res.ok || !data.ok) {
+        // token often expires after a failure; reset it
+        recaptchaRef.current?.reset();
+        setRecaptchaToken(null);
+
         setStatus({
           type: "error",
           message: data.error || "Failed to send message.",
@@ -47,7 +71,14 @@ export default function ContactForm() {
       setLastName("");
       setEmail("");
       setMessage("");
+
+      // reset captcha too
+      recaptchaRef.current?.reset();
+      setRecaptchaToken(null);
     } catch {
+      recaptchaRef.current?.reset();
+      setRecaptchaToken(null);
+
       setStatus({
         type: "error",
         message: "Network error. Please try again.",
@@ -60,7 +91,6 @@ export default function ContactForm() {
   return (
     <section className="bg-white py-16">
       <div className="mx-auto max-w-4xl px-6">
-        
         <div className="mx-auto mt-12 max-w-3xl rounded-3xl bg-white p-10 shadow-[0_18px_60px_rgba(2,6,23,0.10)]">
           <form onSubmit={onSubmit} className="space-y-6">
             {/* First/Last row */}
@@ -104,18 +134,21 @@ export default function ContactForm() {
               required
             />
 
-            {/* reCAPTCHA placeholder (UI only) */}
-            <div className="rounded-xl border border-slate-300 bg-white p-4">
-              <div className="flex items-center gap-4">
-                <div className="h-7 w-7 rounded border-2 border-slate-600" />
-                <div className="text-lg font-medium text-slate-700">
-                  I&apos;m not a robot
-                </div>
-                <div className="ml-auto text-sm text-slate-400">
-                  reCAPTCHA
-                </div>
+            {/* ✅ REAL reCAPTCHA */}
+            {siteKey ? (
+              <div className="flex justify-center">
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={siteKey}
+                  onChange={(token) => setRecaptchaToken(token)}
+                  onExpired={() => setRecaptchaToken(null)}
+                />
               </div>
-            </div>
+            ) : (
+              <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+                Missing NEXT_PUBLIC_RECAPTCHA_SITE_KEY (Vercel env var)
+              </div>
+            )}
 
             {/* Status message */}
             {status.type === "error" && (
@@ -143,3 +176,4 @@ export default function ContactForm() {
     </section>
   );
 }
+
