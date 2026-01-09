@@ -78,7 +78,7 @@ export default function AboutPage() {
                     {/* Bio */}
                     <div className="max-w-xl text-center text-[#0b3b7a] md:text-left">
                         <h3 className="text-3xl font-bold text-slate-700">
-                        Stephanie McKoy,
+                        Stephanie McKoy
                         </h3>
 
                         <p className="mt-1 text-lg font-medium text-slate-700">
