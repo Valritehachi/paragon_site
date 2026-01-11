@@ -83,6 +83,24 @@ export async function POST(req: Request) {
       );
     }
 
+    // ensure env vars are set
+
+    const missing: string[] = [];
+    if (!process.env.SENDGRID_API_KEY) missing.push("SENDGRID_API_KEY");
+    if (!process.env.CONTACT_TO_EMAIL) missing.push("CONTACT_TO_EMAIL");
+    if (!process.env.CONTACT_FROM_EMAIL) missing.push("CONTACT_FROM_EMAIL");
+    if (!process.env.RECAPTCHA_SECRET_KEY) missing.push("RECAPTCHA_SECRET_KEY");
+
+    if (missing.length) {
+      return NextResponse.json(
+        { ok: false, error: `Server is missing email configuration: ${missing.join(", ")}` },
+        { status: 500 }
+      );
+    }
+
+
+    
+
     const apiKey = process.env.SENDGRID_API_KEY;
     const from = process.env.SENDGRID_FROM_EMAIL;
     const to = process.env.SENDGRID_TO_EMAIL;
@@ -149,3 +167,5 @@ function escapeHtml(input: string) {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 }
+
+
