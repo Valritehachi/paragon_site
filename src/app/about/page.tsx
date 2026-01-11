@@ -62,39 +62,44 @@ export default function AboutPage() {
       </section>
 
       {/* LEADERSHIP */}
-        <section className="py-24 bg-slate-50">
-            <div className="mx-auto max-w-7xl px-6">
-                <h2 className="text-center text-4xl font-extrabold text-[#0b3b7a] md:text-5xl">
-                Leadership
-                </h2>
+      <section className="py-24 bg-slate-50">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="text-center text-4xl font-extrabold text-[#0b3b7a] md:text-5xl">
+            Leadership
+          </h2>
 
-                <div className="mt-16 flex flex-col items-center gap-12 md:flex-row md:items-start md:justify-center">
+          <div className="mt-16 flex justify-center">
+            {/* Full Blue Gradient Card */}
+            <div className="relative max-w-4xl w-full bg-gradient-to-br from-[#0b3b7a] to-[#274d7a] rounded-2xl p-8 md:p-12 shadow-2xl overflow-hidden">
                 
-                    {/* Photo / Avatar */}
-                    <div className="h-72 w-72 rounded-3xl bg-gradient-to-b from-[#0b3b7a] to-[#274d7a] flex items-center justify-center text-white text-7xl shadow-xl">
-                        👤
-                    </div>
+              {/* Decorative circle */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
+              
+              {/* Decorative pattern */}
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-white opacity-5 rounded-full transform -translate-x-1/2 translate-y-1/2"></div>
+              
+              {/* Content */}
+              <div className="relative z-10">
+                <h3 className="text-3xl md:text-4xl font-bold text-white">
+                  Stephanie McKoy
+                </h3>
 
-                    {/* Bio */}
-                    <div className="max-w-xl text-center text-[#0b3b7a] md:text-left">
-                        <h3 className="text-3xl font-bold text-slate-700">
-                        Stephanie McKoy
-                        </h3>
+                <p className="mt-2 text-xl font-medium text-white/90">
+                  Executive Director &amp; CEO
+                </p>
 
-                        <p className="mt-1 text-lg font-medium text-slate-700">
-                        Executive Director &amp; CEO
-                        </p>
+                <div className="mt-2 mb-6 w-20 h-1 bg-white/40 rounded"></div>
 
-                        <p className="mt-6 text-lg leading-relaxed text-slate-600">
-                        Over 30 years of experience overseeing federally funded programs,
-                        specializing in compliance, program integrity, and contract
-                        administration.
-                        </p>
-
-                    </div>
-                </div>
+                <p className="text-lg md:text-xl leading-relaxed text-white/95">
+                  Over 30 years of experience overseeing federally funded programs,
+                  specializing in compliance, program integrity, and contract
+                  administration.
+                </p>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
       {/* CORE VALUES */}
       <section className="py-24">

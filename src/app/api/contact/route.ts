@@ -109,9 +109,6 @@ export async function POST(req: Request) {
       );
     }
 
-
-
-
     const apiKey = process.env.SENDGRID_API_KEY;
     const from = process.env.CONTACT_FROM_EMAIL;
     const to = process.env.CONTACT_TO_EMAIL;
