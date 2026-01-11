@@ -42,6 +42,15 @@ async function verifyRecaptcha(token: string) {
 }
 
 export async function POST(req: Request) {
+
+  console.log("ENV CHECK", {
+    hasSendgrid: !!process.env.SENDGRID_API_KEY,
+    hasTo: !!process.env.CONTACT_TO_EMAIL,
+    hasFrom: !!process.env.CONTACT_FROM_EMAIL,
+    hasRecaptchaSecret: !!process.env.RECAPTCHA_SECRET_KEY,
+    nodeEnv: process.env.NODE_ENV,
+    vercelEnv: process.env.VERCEL_ENV,
+  });
   try {
     const body = (await req.json()) as Partial<ContactPayload>;
 
@@ -85,14 +94,7 @@ export async function POST(req: Request) {
 
     // ensure env vars are set
 
-    console.log("ENV CHECK", {
-      hasSendgrid: !!process.env.SENDGRID_API_KEY,
-      hasTo: !!process.env.CONTACT_TO_EMAIL,
-      hasFrom: !!process.env.CONTACT_FROM_EMAIL,
-      hasRecaptchaSecret: !!process.env.RECAPTCHA_SECRET_KEY,
-      nodeEnv: process.env.NODE_ENV,
-      vercelEnv: process.env.VERCEL_ENV,
-    });
+    
 
     const missing: string[] = [];
     if (!process.env.SENDGRID_API_KEY) missing.push("SENDGRID_API_KEY");
@@ -111,8 +113,8 @@ export async function POST(req: Request) {
 
 
     const apiKey = process.env.SENDGRID_API_KEY;
-    const from = process.env.SENDGRID_FROM_EMAIL;
-    const to = process.env.SENDGRID_TO_EMAIL;
+    const from = process.env.CONTACT_FROM_EMAIL;
+    const to = process.env.CONTACT_TO_EMAIL;
 
     if (!apiKey || !from || !to) {
       return NextResponse.json(
