@@ -85,6 +85,15 @@ export async function POST(req: Request) {
 
     // ensure env vars are set
 
+    console.log("ENV CHECK", {
+      hasSendgrid: !!process.env.SENDGRID_API_KEY,
+      hasTo: !!process.env.CONTACT_TO_EMAIL,
+      hasFrom: !!process.env.CONTACT_FROM_EMAIL,
+      hasRecaptchaSecret: !!process.env.RECAPTCHA_SECRET_KEY,
+      nodeEnv: process.env.NODE_ENV,
+      vercelEnv: process.env.VERCEL_ENV,
+    });
+
     const missing: string[] = [];
     if (!process.env.SENDGRID_API_KEY) missing.push("SENDGRID_API_KEY");
     if (!process.env.CONTACT_TO_EMAIL) missing.push("CONTACT_TO_EMAIL");
@@ -93,13 +102,13 @@ export async function POST(req: Request) {
 
     if (missing.length) {
       return NextResponse.json(
-        { ok: false, error: `Server is missing email configuration: ${missing.join(", ")}` },
+        { ok: false, error: `Server missing: ${missing.join(", ")}` },
         { status: 500 }
       );
     }
 
 
-    
+
 
     const apiKey = process.env.SENDGRID_API_KEY;
     const from = process.env.SENDGRID_FROM_EMAIL;
