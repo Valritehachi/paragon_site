@@ -10,6 +10,12 @@ const coreCompetencies = [
   "Eligibility & formulary governance",
   "Audit documentation & reporting",
   "Financial reconciliation",
+  "Vendor performance tracking",
+  "Corrective action support",
+  "Risk identification & escalation",
+  "Eligibility file reconciliation",
+  "Claims dataset integrity checks",
+  "Error trend analysis"
 ];
 
 const differentiators = [
@@ -18,6 +24,7 @@ const differentiators = [
   "API-based interoperability via subcontractors",
   "Vendor risk governance",
   "Federal benefit program experience",
+  "Prime-contractor level governance"
 ];
 
 const naics = ["524292", "524298", "541611", "541612", "541618"];
