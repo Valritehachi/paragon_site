@@ -1,22 +1,6 @@
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
-const coreCompetencies = [
-  "Federal contract management",
-  "Compliance oversight",
-  "Claims adjudication review",
-  "PBM performance monitoring",
-  "Network adequacy oversight",
-  "Eligibility & formulary governance",
-  "Audit documentation & reporting",
-  "Financial reconciliation",
-  "Vendor performance tracking",
-  "Corrective action support",
-  "Risk identification & escalation",
-  "Eligibility file reconciliation",
-  "Claims dataset integrity checks",
-  "Error trend analysis"
-];
 
 const differentiators = [
   "24/7 federal escalation availability",
@@ -60,16 +44,95 @@ export default function CapabilitiesPage() {
               Core Competencies
             </h2>
 
-            <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {coreCompetencies.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-3xl bg-slate-50 p-8 shadow-[0_18px_60px_rgba(2,6,23,0.08)]"
-                >
-                  <div className="mb-5 h-1.5 w-12 rounded-full bg-[#0b3b7a]" />
-                  <p className="text-lg font-bold text-slate-900">{item}</p>
-                </div>
-              ))}
+            <div className="mt-14 grid gap-8 md:grid-cols-2">
+              {/* A */}
+              <div className="rounded-3xl bg-slate-50 p-10 shadow-[0_18px_60px_rgba(2,6,23,0.08)]">
+                <div className="mb-5 h-1.5 w-12 rounded-full bg-[#0b3b7a]" />
+                <h3 className="text-2xl font-extrabold text-[#0b3b7a]">
+                  Federal Contract Governance
+                </h3>
+
+                <ul className="mt-6 space-y-3 text-slate-800">
+                  {[
+                    "Contract management",
+                    "Compliance oversight",
+                    "Policy alignment",
+                    "Reporting & documentation",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#0b3b7a]" />
+                      <span className="text-lg">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* B */}
+              <div className="rounded-3xl bg-slate-50 p-10 shadow-[0_18px_60px_rgba(2,6,23,0.08)]">
+                <div className="mb-5 h-1.5 w-12 rounded-full bg-[#0b3b7a]" />
+                <h3 className="text-2xl font-extrabold text-[#0b3b7a]">
+                  PBM Oversight & Performance Monitoring
+                </h3>
+
+                <ul className="mt-6 space-y-3 text-slate-800">
+                  {[
+                    "Claims adjudication review",
+                    "Hard/soft edit compliance",
+                    "PBM performance monitoring",
+                    "Network adequacy oversight",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#0b3b7a]" />
+                      <span className="text-lg">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* C */}
+              <div className="rounded-3xl bg-slate-50 p-10 shadow-[0_18px_60px_rgba(2,6,23,0.08)]">
+                <div className="mb-5 h-1.5 w-12 rounded-full bg-[#0b3b7a]" />
+                <h3 className="text-2xl font-extrabold text-[#0b3b7a]">
+                  Data Integrity & Audit Controls
+                </h3>
+
+                <ul className="mt-6 space-y-3 text-slate-800">
+                  {[
+                    "Eligibility file reconciliation",
+                    "Claims dataset integrity checks",
+                    "Error trend analysis",
+                    "Audit documentation & reporting",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#0b3b7a]" />
+                      <span className="text-lg">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* D */}
+              <div className="rounded-3xl bg-slate-50 p-10 shadow-[0_18px_60px_rgba(2,6,23,0.08)]">
+                <div className="mb-5 h-1.5 w-12 rounded-full bg-[#0b3b7a]" />
+                <h3 className="text-2xl font-extrabold text-[#0b3b7a]">
+                  Financial & Vendor Risk Management
+                </h3>
+
+                <ul className="mt-6 space-y-3 text-slate-800">
+                  {[
+                    "Financial reconciliation",
+                    "Cost transparency review",
+                    "Vendor performance tracking",
+                    "Corrective action support",
+                    "Risk identification & escalation",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#0b3b7a]" />
+                      <span className="text-lg">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -134,6 +197,10 @@ export default function CapabilitiesPage() {
 
                 <div className="mt-8 rounded-2xl bg-white p-6 border border-slate-200">
                   <p className="text-lg font-bold text-slate-900">SAM.gov Active</p>
+                </div>
+
+                <div className="mt-8 rounded-2xl bg-white p-6 border border-slate-200">
+                  <p className="text-lg font-bold text-slate-900">Small Business (Self-certification)</p>
                 </div>
 
               </div>

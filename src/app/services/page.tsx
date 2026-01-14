@@ -135,17 +135,34 @@ export default function ServicesPage() {
           
           <div className="mt-16 grid gap-10 lg:grid-cols-3">
 
-          {/* Who We Support */}
-          <div className="rounded-3xl bg-white p-10 shadow-[0_18px_60px_rgba(2,6,23,0.10)]">
-            <h3 className="text-2xl font-extrabold text-[#0b3b7a]">
-            Who We Support
-            </h3>
+        {/* Who We Support */}
 
-            <p className="mt-6 text-lg leading-relaxed text-slate-800">
-            PFSC supports federal agencies and government programs requiring
-            disciplined oversight, compliance, governance, and audit-ready performance.
-            </p>
-          </div>
+        <div className="rounded-3xl bg-white p-10 shadow-[0_18px_60px_rgba(2,6,23,0.10)]">
+          <h3 className="text-2xl font-extrabold text-[#0b3b7a]">
+            Who We Support
+          </h3>
+
+          <p className="mt-6 text-lg leading-relaxed text-slate-800">
+            PFSC supports federal agencies and government programs requiring disciplined
+            oversight, compliance, governance, and audit-ready performance.
+          </p>
+
+          <p className="mt-6 text-lg leading-relaxed text-slate-800">
+            We also coordinate with:
+          </p>
+
+          <ul className="mt-4 space-y-4 text-slate-800">
+            {[
+              "PBM subcontractors operating under PFSC’s governance",
+              "Partner organizations supporting federal benefit operations",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#0b3b7a]" />
+                <span className="text-lg">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
           {/* Compliance Statement */}
           <div className="rounded-3xl bg-white p-10 shadow-[0_18px_60px_rgba(2,6,23,0.10)]">
@@ -170,23 +187,6 @@ export default function ServicesPage() {
             with NIST-aligned security controls.
             </p>
           </div>
-
-          {/* Who We Support */}
-          <div className="rounded-3xl bg-white p-10 shadow-[0_18px_60px_rgba(2,6,23,0.10)]">
-            <h3 className="text-2xl font-extrabold text-[#0b3b7a]">
-            We also coordinate with:
-            </h3>
-
-            <ul className="mt-6 space-y-4 text-slate-800">
-            {["PBM subcontractors operating under PFSC’s governance", "Partner organizations supporting federal benefit operations"].map((item) => (
-              <li key={item} className="flex items-start gap-3">
-              <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#0b3b7a]" />
-              <span className="text-lg">{item}</span>
-              </li>
-            ))}
-            </ul>
-          </div>
-
 
           </div>
         </div>
