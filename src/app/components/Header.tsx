@@ -17,8 +17,10 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full border-b bg-white">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 md:px-12 py-0">
+    // <header className="w-full border-b bg-white">
+    <header className="fixed top-0 left-0 z-50 w-full border-b bg-white">
+
+      <div className="mx-auto flex w-full  items-center justify-between px-4 py-0">
 
         {/* LOGO */}
        <div className="relative h-24 w-[360px] md:h-28 md:w-[460px] lg:h-32 lg:w-[520px]">
