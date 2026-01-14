@@ -18,18 +18,41 @@ export default function Header() {
 
   return (
     <header className="w-full border-b bg-white">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 md:px-12 py-6 md:py-8">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 md:px-12 py-0">
+
         {/* LOGO */}
-        <div className="relative h-32 w-64 md:h-40 md:w-80">
+       <div className="relative h-24 w-[360px] md:h-28 md:w-[460px] lg:h-32 lg:w-[520px]">
+        <Image
+          src="/images/PFSC-Logo.png"
+          alt="Paragon Federal Strategies Corporation"
+          fill
+          priority
+          className="object-contain object-left"
+          sizes="(max-width: 768px) 360px, (max-width: 1024px) 460px, 520px"
+        />
+      </div>
+      
+       {/* <div className="flex flex-col items-center">
+        <div className="text-center leading-tight">
+          <div className="text-[#0b3b7a] font-extrabold tracking-[0.06em] text-2xl sm:text-3xl md:text-4xl">
+            PARAGON
+          </div>
+
+          <div className="mt-0 text-[#0b3b7a] font-small tracking-normal text-sm sm:text-base md:text-md">
+            Federal Strategies Corporation
+          </div>
+        </div>
+
+        <div className="relative mt-1 h-24 w-24 sm:h-28 sm:w-28 md:h-36 md:w-36">
           <Image
-            src="/images/logo.png"
-            alt="Paragon Federal Strategies Corporation"
+            src="/images/logo_3.jpeg"
+            alt="PFSC"
             fill
             priority
-            className="object-contain object-left-top"
-            sizes="(max-width: 768px) 256px, 320px"
+            className="object-contain"
           />
         </div>
+      </div> */}
 
           {/* Desktop nav (pushed right) */}
           <nav className="hidden items-center gap-10 text-base font-medium text-slate-700 md:flex">
