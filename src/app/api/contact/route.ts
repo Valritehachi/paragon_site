@@ -100,6 +100,7 @@ export async function POST(req: Request) {
     if (!process.env.SENDGRID_API_KEY) missing.push("SENDGRID_API_KEY");
     if (!process.env.CONTACT_TO_EMAIL) missing.push("CONTACT_TO_EMAIL");
     if (!process.env.CONTACT_FROM_EMAIL) missing.push("CONTACT_FROM_EMAIL");
+    if (!process.env.CONTACT_CC_EMAIL) missing.push("CONTACT_CC_EMAIL");
     if (!process.env.RECAPTCHA_SECRET_KEY) missing.push("RECAPTCHA_SECRET_KEY");
 
     if (missing.length) {
@@ -112,6 +113,7 @@ export async function POST(req: Request) {
     const apiKey = process.env.SENDGRID_API_KEY;
     const from = process.env.CONTACT_FROM_EMAIL;
     const to = process.env.CONTACT_TO_EMAIL;
+    const cc = process.env.CONTACT_CC_EMAIL;
 
     if (!apiKey || !from || !to) {
       return NextResponse.json(
@@ -150,6 +152,7 @@ export async function POST(req: Request) {
     await sgMail.send({
       to,
       from,
+      cc,
       subject,
       text,
       html,
