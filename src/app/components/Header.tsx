@@ -25,7 +25,7 @@ export default function Header() {
         {/* LOGO */}
        <div className="relative h-24 w-[360px] md:h-28 md:w-[460px] lg:h-32 lg:w-[520px]">
         <Image
-          src="/images/PFSC-Logo.png"
+          src="/images/logo_2.png"
           alt="Paragon Federal Strategies Corporation"
           fill
           priority
