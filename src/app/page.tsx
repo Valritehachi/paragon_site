@@ -11,8 +11,13 @@ export default function Home() {
       <Header />
 
       <main className="flex-1">
-        <Hero />
-        <CorePillars />
+        <div className="mt-0">
+          <Hero />
+        </div>
+
+        <div className="mt-16">
+          <CorePillars />
+        </div>
 
         {/* WHY PFSC */}
         <section className="bg-white">
@@ -88,13 +93,6 @@ export default function Home() {
                   >
                     {item.title}
                   </h3>
-
-                  {/* <p
-                    className={`relative mt-6 text-lg leading-relaxed
-                    ${item.image ? "text-white/90" : "text-slate-600"}`}
-                  >
-                    {item.desc}
-                  </p> */}
                 </div>
               ))}
             </div>
