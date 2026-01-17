@@ -3,6 +3,9 @@ import "./globals.css";
 export const metadata = {
   title: "PARAGON | Federal Strategies Corporation",
   description: "Trusted federal partner for pharmacy benefit oversight.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
