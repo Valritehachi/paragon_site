@@ -1,0 +1,5 @@
+{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "ParagonFederalStrategiesCorp.com",
+  "Id": "783a548e-3d92-4d80-a2c5-bd91f9511742"
+}
